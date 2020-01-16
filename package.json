@@ -42,7 +42,7 @@
     "twilio": "^3.39.2"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
+    "chai": "^4.2.0",
     "cross-env": "^6.0.3",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
