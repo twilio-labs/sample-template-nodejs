@@ -1,4 +1,4 @@
-const cfg = require('./src/config');
+const cfg = require('./config');
 const server = require('./server');
 
 server.listen(cfg.port, function() {

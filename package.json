@@ -2,12 +2,17 @@
   "name": "sample-template-node",
   "version": "1.0.0",
   "private": true,
-  "main": "./app.js",
+  "main": "./src/index.js",
   "scripts": {
     "start": "node .",
+    "start:ci": "cross-env NODE_ENV=test npm start",
     "setup": "configure-env",
     "pretest": "cross-env NODE_ENV=test",
     "test": "eslint . && mocha test",
+    "test:ci": "cross-env NODE_ENV=test run-s test cypress:ci",
+    "preci": "npm run test",
+    "cypress": "cypress run",
+    "cypress:ci": "server-test start:ci http://localhost:3000 cypress",
     "format": "eslint . --fix",
     "dev": "nodemon ."
   },
@@ -27,30 +32,34 @@
     "express"
   ],
   "engines": {
-    "node": ">=8.x"
+    "node": ">=10.x"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
     "configure-env": "^1.0.0",
     "cookie-parser": "~1.4.4",
     "debug": ">=4.1.1",
-    "dotenv-safe": "^8.2.0",
     "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
     "morgan": "^1.9.1",
-    "pug": "^2.0.4",
     "serve-favicon": "^2.5.0",
     "twilio": "^3.39.3"
   },
   "devDependencies": {
     "chai": "^4.2.0",
     "cross-env": "^7.0.0",
+    "cypress": "^4.0.2",
+    "dotenv-safe": "^8.2.0",
     "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-prettier": "^3.1.2",
     "mocha": "^7.0.1",
+    "nock": "^12.0.1",
     "nodemon": "^2.0.2",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.19.1",
+    "start-server-and-test": "^1.10.8",
     "supertest": "^4.0.2"
   }
 }

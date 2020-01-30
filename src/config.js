@@ -1,5 +1,12 @@
+const path = require('path');
+
 if (!process.env.CI) {
-  require('dotenv-safe').load();
+  require('dotenv-safe').config({
+    path:
+      process.env.NODE_ENV === 'test'
+        ? path.resolve(__dirname, '../.env.example')
+        : undefined,
+  });
 }
 
 const cfg = {};
@@ -13,7 +20,8 @@ cfg.port = process.env.PORT || 3000;
 // A good practice is to store these string values as system environment
 // variables, and load them from there as we are doing below. Alternately,
 // you could hard code these values here as strings.
-cfg.twilioAccountSid = process.env.TWILIO_ACCOUNT_SID || 'ACxxxxxxxxxxxxx';
+cfg.twilioAccountSid =
+  process.env.TWILIO_ACCOUNT_SID || 'ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
 cfg.twilioAuthToken = process.env.TWILIO_AUTH_TOKEN || '1234567890abc';
 
 // A Twilio number you control - choose one from:
