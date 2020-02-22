@@ -5,16 +5,20 @@ const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const expressHandlebars = require('express-handlebars');
 
 const exampleRoutes = require('./routes/example');
 
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'pug');
+app.set('views', path.resolve(__dirname, '../views'));
+app.engine('hbs', expressHandlebars({ extname: '.hbs' }));
+app.set('view engine', 'hbs');
 
-app.use(logger('dev'));
+if (process.env.NODE_ENV !== 'test') {
+  app.use(logger('dev'));
+}
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({
@@ -22,7 +26,7 @@ app.use(
   })
 );
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.resolve(__dirname, '../public')));
 
 app.use('/', exampleRoutes);
 

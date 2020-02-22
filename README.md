@@ -32,9 +32,10 @@ We can render UML diagrams using [Mermaid](https://mermaidjs.github.io/).
 ## Features
 
 - Node.js web server using [Express.js](https://npm.im/express)
-- Basic web user interface using [Pug](https://npm.im/pug) for templating and Bootstrap for UI
+- Basic web user interface using [Handlebars](https://npm.im/express-handlebars) for templating and Bootstrap for UI
 - User interface to create reminders.
 - Unit tests using [`mocha`](https://npm.im/mocha) and [`chai`](https://npm.im/chai)
+- End to End UI testing using [Cypress](https://www.cypress.io/)
 - [Automated CI testing using GitHub Actions](/.github/workflows/nodejs.yml)
 - Linting and formatting using [ESLint](https://npm.im/eslint) and [Prettier](https://npm.im/prettier)
 - Interactive configuration of environment variables upon running `npm run setup` using [`configure-env`](https://npm.im/configure-env)

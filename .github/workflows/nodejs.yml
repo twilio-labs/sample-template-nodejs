@@ -1,6 +1,6 @@
 name: Node CI
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   build:
@@ -16,20 +16,29 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Cache node modules
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-build-${{ env.cache-name }}-
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
+      # - name: Cache node modules
+      #   uses: actions/cache@v1
+      #   with:
+      #     path: node_modules
+      #     key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+      #     restore-keys: |
+      #       ${{ runner.OS }}-build-${{ env.cache-name }}-
+      #       ${{ runner.OS }}-build-
+      #       ${{ runner.OS }}-
+      # - name: Cache Cypress
+      #   uses: actions/cache@v1
+      #   with:
+      #     path: /home/runner/.cache/Cypress
+      #     key: ${{ runner.OS }}-cypress-${{ hashFiles('**/package-lock.json') }}
+      #     restore-keys: |
+      #       ${{ runner.OS }}-cypress-${{ env.cache-name }}-
+      #       ${{ runner.OS }}-cypress-
+      #       ${{ runner.OS }}-
       - name: npm install, build, and test
         run: |
           npm install
           npm run build --if-present
-          npm test
+          npm run test:ci
         env:
           CI: true
           NODE_ENV: test
