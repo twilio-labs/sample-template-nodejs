@@ -43,7 +43,7 @@
     "express-handlebars": "^5.2.0",
     "morgan": "^1.10.0",
     "serve-favicon": "^2.5.0",
-    "twilio": "^3.50.0"
+    "twilio": "^3.51.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",
