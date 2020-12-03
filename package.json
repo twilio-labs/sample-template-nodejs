@@ -53,7 +53,7 @@
     "eslint": "^7.14.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^6.15.0",
-    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-prettier": "^3.2.0",
     "mocha": "^8.2.1",
     "nock": "^13.0.5",
     "nodemon": "^2.0.6",
